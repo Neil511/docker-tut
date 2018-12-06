@@ -19,3 +19,5 @@ EXPOSE $port
 
 RUN apt-get install -y curl
 RUN curl http://localhost:$port
+
+# TODO: Setup flask server and pikachu meme, hit flask server and get a response
