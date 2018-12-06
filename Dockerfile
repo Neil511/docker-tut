@@ -5,16 +5,25 @@ FROM ubuntu:latest
 
 MAINTAINER WYNR Reading Group <nobody@yelp.com>
 
+WORKDIR /app
+COPY app.py /app/app.py
+
 # Defining env variables
-ENV port=1234
+ENV flask_app=app.py
 
 # Linux things
 RUN apt-get update
-RUN apt-get -y install python-pip python-dev build-essential 
+
+# Install pip and its dependencies
+RUN apt-get -y install python-pip python-dev build-essential
+
+# Usually we have a requirements.txt file but we only need Flask so:
 RUN pip install Flask
 
-# What the Dockerfile runs on start
-# Needs at least one ENTRYPOINT or CMD command
+ENTRYPOINT python -m
+CMD flask run
+
+#########################################################################
 EXPOSE $port
 
 RUN apt-get install -y curl
