@@ -24,6 +24,4 @@ RUN pip install Flask
 # The most important of commands
 RUN cat wow.txt
 
-EXPOSE $port
-
 CMD python -m flask run --host=0.0.0.0

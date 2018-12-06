@@ -1,0 +1,12 @@
+FROM mysql:latest
+
+MAINTAINER Ian Stewart <istewart@yelp.com>
+
+ENV port=1234
+
+EXPOSE $port
+
+WORKDIR /var/db
+
+ADD wow.txt /var/db/wow.txt
+RUN cat wow.txt
