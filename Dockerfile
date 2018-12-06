@@ -10,14 +10,15 @@ ENV port=1234
 
 # Linux things
 RUN apt-get update
-RUN apt-get install -y nginx
+RUN apt-get -y install python-pip python-dev build-essential 
+RUN pip install Flask
 
 # What the Dockerfile runs on start
 # Needs at least one ENTRYPOINT or CMD command
-ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
 EXPOSE $port
 
 RUN apt-get install -y curl
 RUN curl http://localhost:$port
 
 # TODO: Setup flask server and pikachu meme, hit flask server and get a response
+# BUILD COMMAND: docker build -t test:latest .
